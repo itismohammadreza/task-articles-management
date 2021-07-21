@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row p-3 p-md-5">
+    <div class="col-12">
+      <h1>{{pageHeader}}</h1>
+    </div>
+    <div class="col-md-9 base-info">
+      <form class="" [formGroup]="form" (ngSubmit)="onSubmitForm()">
+        <fieldset [disabled]="disableForm">
+          <ng-input-text formControlName="title" label="Title" placeholder="Title"
+                         [errors]="{'required':'Required Field'}"></ng-input-text>
+          <ng-input-text formControlName="description" label="Description" placeholder="Description"
+                         [errors]="{'required':'Required Field'}"></ng-input-text>
+          <ng-input-textarea formControlName="body" label="Body" rows="10"
+                             [errors]="{'required':'Required Field'}"></ng-input-textarea>
+          <ng-button type="submit" label="Submit"></ng-button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-md-3">
+      <ng-input-text label="Tags" placeholder="New Tag" (onKeyup)="onAddTag($event)"></ng-input-text>
+      <div class="p-3 tags border rounded mt-3" *ngIf="tags">
+        <p-checkbox *ngFor="let tag of tags"
+                    name="groupname"
+                    [label]="tag"
+                    [value]="tag"
+                    [(ngModel)]="selectedTags">
+        </p-checkbox>
+      </div>
+    </div>
+  </div>
+</div>

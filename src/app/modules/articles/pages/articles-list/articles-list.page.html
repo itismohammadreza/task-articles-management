@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row p-3 p-md-5">
+    <div class="col-12">
+      <h1>All Posts</h1>
+      <ng-table [colDef]="colDef" [data]="articles">
+        <ng-template let-item let-i="index">
+          <ng-dropdown placeholder="..." [options]="actions" (onChange)="onSelectAction($event,item,i)"></ng-dropdown>
+        </ng-template>
+      </ng-table>
+      <p-paginator [rows]="20" [totalRecords]="articlesCount" (onPageChange)="onPageChange($event)"></p-paginator>
+    </div>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

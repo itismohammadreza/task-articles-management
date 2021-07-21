@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+  <tr class="bg-surface-100">
+    <th>#</th>
+    <th *ngFor="let col of colDef">
+      {{ col.header }}
+    </th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of data;let i = index">
+    <td>{{i + 1}}</td>
+    <td *ngFor="let col of colDef">{{ fromObj(item, col.field) | limitTo:col.limitTo  }}</td>
+    <td>
+      <ng-container
+        *ngTemplateOutlet="layoutTemplate; context: { $implicit: item,index:i }">
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+<label *ngIf="label" [attr.for]="inputId">{{label}}</label>
+<input
+  pInputText
+  [(ngModel)]="value"
+  [attr.id]="inputId"
+  [attr.type]="type"
+  [attr.placeholder]="placeholder"
+  [disabled]="disabled"
+  [ngClass]="{
+        'ng-invalid ng-dirty': ngControl ? isInvalid(ngControl.control) : false
+      }"
+  [readonly]="readonly"
+  (blur)="_onBlur()"
+  (change)="_onChange($event)"
+  (input)="_onInput($event)"
+  (keydown)="_onKeydown($event)"
+  (keyup)="_onKeyup($event)"
+/>
+<ng-container *ngFor="let error of errors | keyvalue">
+  <p *ngIf="showError(error.key)" class="error p-invalid p-error">
+    {{ error.value }}
+  </p>
+</ng-container>

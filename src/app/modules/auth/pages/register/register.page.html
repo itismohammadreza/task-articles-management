@@ -1,0 +1,40 @@
+<div class="container-fluid h-100">
+  <div class="row align-content-center justify-content-center h-100">
+    <div class="col-12">
+      <form
+        class="py-5 px-4 box rounded-lg bg-surface-100"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <h2 class="text-center mb-5">REGISTER</h2>
+        <ng-input-text
+          class="mb-4"
+          formControlName="username"
+          placeholder="User Name"
+          [errors]="{'required':'Required Field'}"
+        ></ng-input-text>
+        <ng-input-text
+          class="mb-4"
+          formControlName="email"
+          placeholder="Email"
+          [errors]="{'required':'Required Field','email':'Invalid Email'}"
+        ></ng-input-text>
+        <ng-input-text
+          class="mb-4"
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          [errors]="{'required':'Required Field'}"
+        ></ng-input-text>
+        <ng-button
+          class="mb-2"
+          type="submit"
+          [full]="true"
+          label="Register"
+        ></ng-button>
+        <span>Already Registered? <a class="text-dark"
+                                     routerLink="/auth/login"><strong>Login</strong></a></span>
+      </form>
+    </div>
+  </div>
+</div>

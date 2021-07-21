@@ -1,0 +1,8 @@
+:host {
+  &.full {
+    &,
+    & ::ng-deep .p-button {
+      width: 100%;
+    }
+  }
+}

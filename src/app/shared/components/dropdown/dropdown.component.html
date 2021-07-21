@@ -1,0 +1,21 @@
+<label *ngIf="label" [attr.for]="inputId">{{label}}</label>
+<p-dropdown
+  [(ngModel)]="value"
+  [autoDisplayFirst]="false"
+  [disabled]="disabled"
+  [inputId]="inputId"
+  [ngClass]="{
+        'ng-invalid ng-dirty': ngControl ? isInvalid(ngControl.control) : false
+      }"
+  [optionLabel]="optionLabel"
+  [optionValue]="optionValue"
+  [options]="options"
+  [placeholder]="placeholder"
+  (onBlur)="_onBlur()"
+  (onChange)="_onChange($event)"
+></p-dropdown>
+<ng-container *ngFor="let error of errors | keyvalue">
+  <p *ngIf="showError(error.key)" class="error p-invalid p-error">
+    {{ error.value }}
+  </p>
+</ng-container>
